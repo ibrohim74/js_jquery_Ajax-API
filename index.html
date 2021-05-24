@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lesson22</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-5">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>username</th>
+                <th>email</th>
+                <th>phone</th>
+                <th>zipcode</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+  <script type="application/javascript">
+      $.ajax({
+          method:"GET",
+          url:"https://jsonplaceholder.typicode.com/users",
+          success:(data)=>{
+              drawUsers(data)
+          }
+      });
+      function drawUsers(data) {
+          for (let i = 0; i < data.length; i++) {
+              $('tbody').append(
+                  '<tr>' +
+                  '<td>' + data[i].id+'</td>'+
+                  '<td>' + data[i].name+'</td>'+
+                  '<td>' + data[i].username+'</td>'+
+                  '<td>' + data[i].email+'</td>'+
+                  '<td>' + data[i].phone+'</td>'+
+                  '<td>' + data[i].address.zipcode+'</td>'+
+                          '</tr>'
+              )
+          }
+      }
+  </script>
+</body>
+</html>
